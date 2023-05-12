@@ -1,0 +1,29 @@
+<body>
+<button (click)="getNeighborhoods()">Get Neighborhoods</button>
+
+<ul>
+  <li *ngFor="let neighborhood of neighborhoods">
+    {{ neighborhood.id }} - {{ neighborhood.name }}
+    <button (click)="selectedNeighborhood=neighborhood.id; getTeams()">Teams</button>
+    <button (click)="selectedNeighborhood=neighborhood.id; getPriorities()">Priorities</button>
+  </li>
+</ul>
+
+<div *ngIf="teams">
+  <h2>Teams for {{ selectedNeighborhood }}</h2>
+  <ul>
+    <li *ngFor="let team of teams">
+      {{ team.name }} - {{ team.rank }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="priorities">
+  <h2>Priorities for {{ selectedNeighborhood }}</h2>
+  <ul>
+    <li *ngFor="let priority of priorities">
+      {{ priority.issue }} - {{ priority.action }}
+    </li>
+  </ul>
+</div>
+</body>
